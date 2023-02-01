@@ -33,53 +33,51 @@ class App extends Component {
 						isAdmin={this.state.isAdmin}
 					/>
 				</header>
-				<div className="container-xxl my-md-4 bd-layout">
-					<main>
-						<Routes>
-							<Route
-								path="*"
-								element={
-									<Navigate
-										to="/not-found"
-										replace={true}
-									/>
-								}
-							/>
-							<Route
-								path="/"
-								element={<Home />}
-							/>
-							<Route
-								path="/login"
-								element={<LoginForm user={this.state.user} />}
-							/>
-							<Route
-								path="/register"
-								element={<RegisterForm />}
-							/>
-							<Route
-								path="/movies/*"
-								element={<Movies isAdmin={this.state.isAdmin} />}
-							/>
-							<Route
-								path="/movies/:id"
-								element={<UserLock component={MovieForm} />}
-							/>
-							<Route
-								path="/customers"
-								element={<AdminLock component={Customers} />}
-							/>
-							<Route
-								path="/rentals"
-								element={<Rentals />}
-							/>
-							<Route
-								path="/not-found"
-								element={<NotFound />}
-							/>
-						</Routes>
-					</main>
-				</div>
+				<main className="container-xxl my-md-4 bd-layout">
+					<Routes>
+						<Route
+							path="*"
+							element={
+								<Navigate
+									to="/not-found"
+									replace={true}
+								/>
+							}
+						/>
+						<Route
+							path="/"
+							element={<Home />}
+						/>
+						<Route
+							path="/login"
+							element={<LoginForm user={this.state.user} />}
+						/>
+						<Route
+							path="/register"
+							element={<RegisterForm />}
+						/>
+						<Route
+							path="/movies/*"
+							element={<Movies isAdmin={this.state.isAdmin} />}
+						/>
+						<Route
+							path="/movies/:id"
+							element={<UserLock component={MovieForm} />}
+						/>
+						<Route
+							path="/customers"
+							element={<AdminLock component={Customers} />}
+						/>
+						<Route
+							path="/rentals"
+							element={<Rentals />}
+						/>
+						<Route
+							path="/not-found"
+							element={<NotFound />}
+						/>
+					</Routes>
+				</main>
 			</>
 		);
 	}

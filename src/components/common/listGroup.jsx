@@ -8,7 +8,9 @@ const ListGroup = ({
 	onItemClick,
 }) => {
 	return (
-		<div className="d-flex flex-row list-group-item-action mb-2">
+		<div
+			className="btn-group d-flex flex-wrap mb-2"
+			role="group">
 			{items.map((item) => (
 				<button
 					key={item[valueProperty]}

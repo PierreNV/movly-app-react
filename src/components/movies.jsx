@@ -100,24 +100,33 @@ class Movies extends Component {
 		};
 	};
 
+	getSelectedGenreName = (selectedGenre) => {
+		if (selectedGenre) {
+			const selectedGenreName = `${selectedGenre["name"]}`;
+			return selectedGenreName.toLowerCase() !== "all genres"
+				? selectedGenreName.toLowerCase()
+				: null;
+		}
+	};
+
 	render() {
 		const { isAdmin } = this.props;
 		const { genres, selectedGenre, pageSize, currentPage, sortedColumn } =
 			this.state;
 		const { itemsCount, currentPageMovies } = this.filterData();
-		const selectedGenreName = selectedGenre ? `${selectedGenre["name"]}` : "";
+
 		return (
 			<>
 				<div className="mb-2">
 					{itemsCount ? (
 						<p className="pb-2">
-							We have {itemsCount} {selectedGenreName.toLowerCase()} movies in the
-							database.
+							We have {itemsCount} {this.getSelectedGenreName(selectedGenre)} movies in
+							the database.
 						</p>
 					) : (
 						<p>Please wait...</p>
 					)}
-					<div className="mb-2 table-responsive-xxl ">
+					<div className="mb-2">
 						<ListGroup
 							items={genres}
 							selectedItem={selectedGenre}

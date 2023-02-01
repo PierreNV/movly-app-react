@@ -108,12 +108,21 @@ class Movies extends Component {
 		const selectedGenreName = selectedGenre ? `${selectedGenre["name"]}` : "";
 		return (
 			<>
-				<div className="row">
-					<p className="pb-2">
-						We have {itemsCount} {selectedGenreName.toLowerCase()} movies in the
-						database.
-					</p>
-					<div className="col">
+				<div className="mb-2">
+					{itemsCount ? (
+						<p className="pb-2">
+							We have {itemsCount} {selectedGenreName.toLowerCase()} movies in the
+							database.
+						</p>
+					) : (
+						<p>Please wait...</p>
+					)}
+					<div className="mb-2 table-responsive-xxl ">
+						<ListGroup
+							items={genres}
+							selectedItem={selectedGenre}
+							onItemClick={this.selectGenreHandler}
+						/>
 						<SearchField
 							value={this.state.searchInput}
 							onSearch={this.searchHandler}
@@ -127,14 +136,13 @@ class Movies extends Component {
 							isAdmin={isAdmin}
 						/>
 						<div className="d-flex justify-content-between">
-							{isAdmin && (
+							{isAdmin ? (
 								<Link
 									className="btn btn-primary"
 									to="/movies/new">
 									Add
 								</Link>
-							)}
-							{!isAdmin && (
+							) : (
 								<button
 									type="button"
 									className="btn btn-primary"
@@ -149,13 +157,6 @@ class Movies extends Component {
 								onPageClick={this.pageClickHandler}
 							/>
 						</div>
-					</div>
-					<div className="col-3">
-						<ListGroup
-							items={genres}
-							selectedItem={selectedGenre}
-							onItemClick={this.selectGenreHandler}
-						/>
 					</div>
 				</div>
 			</>

@@ -51,7 +51,21 @@ const Nav = ({ user, isAdmin }) => {
 								</NavLink>
 							</li>
 						)}
-						{!user && (
+						{user ? (
+							<>
+								<li className="nav-item">
+									<NavLink
+										className="nav-link"
+										aria-current="page"
+										to="/profile">
+										{user.name}
+									</NavLink>
+								</li>
+								<li className="nav-item">
+									<Logout />
+								</li>
+							</>
+						) : (
 							<>
 								<li className="nav-item">
 									<NavLink
@@ -68,21 +82,6 @@ const Nav = ({ user, isAdmin }) => {
 										to="/login">
 										Sign in
 									</NavLink>
-								</li>
-							</>
-						)}
-						{user && (
-							<>
-								<li className="nav-item">
-									<NavLink
-										className="nav-link"
-										aria-current="page"
-										to="/profile">
-										{user.name}
-									</NavLink>
-								</li>
-								<li className="nav-item">
-									<Logout />
 								</li>
 							</>
 						)}

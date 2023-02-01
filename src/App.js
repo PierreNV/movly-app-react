@@ -1,6 +1,5 @@
 import { Component } from "react";
 import { Routes, Route, Navigate } from "react-router-dom";
-import { ToastContainer } from "react-toastify";
 import { getCurrentUser } from "./services/servAuth";
 import Movies from "./components/movies";
 import Home from "./components/home";
@@ -28,7 +27,6 @@ class App extends Component {
 	render() {
 		return (
 			<>
-				<ToastContainer />
 				<header>
 					<Nav
 						user={this.state.user}
@@ -65,11 +63,11 @@ class App extends Component {
 							/>
 							<Route
 								path="/movies/:id"
-								element={<UserLock Component={MovieForm} />}
+								element={<UserLock component={MovieForm} />}
 							/>
 							<Route
 								path="/customers"
-								element={<AdminLock Component={Customers} />}
+								element={<AdminLock component={Customers} />}
 							/>
 							<Route
 								path="/rentals"

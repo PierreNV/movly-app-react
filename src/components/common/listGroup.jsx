@@ -8,20 +8,20 @@ const ListGroup = ({
 	onItemClick,
 }) => {
 	return (
-		<ul className="list-group mb-2">
+		<div className="d-flex flex-row list-group-item-action mb-2">
 			{items.map((item) => (
-				<li
+				<button
 					key={item[valueProperty]}
 					className={
 						item === selectedItem
-							? "btn btn-light list-group-item active"
-							: "btn btn-light list-group-item"
+							? "flex-fill btn btn-light active"
+							: "flex-fill btn btn-light"
 					}
 					onClick={() => onItemClick(item)}>
 					{item[textProperty]}
-				</li>
+				</button>
 			))}
-		</ul>
+		</div>
 	);
 };
 

@@ -1,7 +1,7 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
 import { logout } from "../services/servAuth";
-import { hoc } from "./common/hoc";
+import { withRouter } from "./common/withRouter";
 
 const Logout = (props) => {
 	const onSignOut = async () => {
@@ -20,4 +20,4 @@ const Logout = (props) => {
 	);
 };
 
-export default hoc(Logout);
+export default withRouter(Logout);

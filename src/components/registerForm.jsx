@@ -2,7 +2,7 @@ import React from "react";
 import Joi from "joi-browser";
 import Form from "./common/form";
 import { loginWithJWT } from "../services/servAuth";
-import { hoc } from "./common/hoc";
+import { withRouter } from "./common/withRouter";
 import { register } from "../services/servUsers";
 
 class RegisterForm extends Form {
@@ -81,4 +81,4 @@ class RegisterForm extends Form {
 	}
 }
 
-export default hoc(RegisterForm);
+export default withRouter(RegisterForm);

@@ -1,7 +1,7 @@
 import React from "react";
 import Joi from "joi-browser";
 import Form from "./common/form";
-import { hoc } from "./common/hoc";
+import { withRouter } from "./common/withRouter";
 import { login } from "../services/servAuth";
 import { Navigate } from "react-router-dom";
 
@@ -81,4 +81,4 @@ class LoginForm extends Form {
 	}
 }
 
-export default hoc(LoginForm);
+export default withRouter(LoginForm);

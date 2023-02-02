@@ -1,7 +1,7 @@
 import React from "react";
 import Joi from "joi";
 import Form from "./common/form";
-import { hoc } from "./common/hoc";
+import { withRouter } from "./common/withRouter";
 import { getGenres } from "../services/servGenres";
 import { getMovie, saveMovie } from "../services/servMovies";
 
@@ -74,4 +74,4 @@ class MovieForm extends Form {
 	}
 }
 
-export default hoc(MovieForm);
+export default withRouter(MovieForm);

@@ -33,14 +33,16 @@ const Nav = ({ user, isAdmin }) => {
 								Movies
 							</NavLink>
 						</li>
-						<li className="nav-item">
-							<NavLink
-								className="nav-link"
-								aria-current="page"
-								to="/rentals">
-								Rentals
-							</NavLink>
-						</li>
+						{user && (
+							<li className="nav-item">
+								<NavLink
+									className="nav-link"
+									aria-current="page"
+									to="/rentals">
+									Rentals
+								</NavLink>
+							</li>
+						)}
 						{isAdmin && (
 							<li className="nav-item">
 								<NavLink

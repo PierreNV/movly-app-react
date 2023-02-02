@@ -24,7 +24,7 @@ const Nav = ({ user, isAdmin }) => {
 				<div
 					className="collapse navbar-collapse"
 					id="navbarSupportedContent">
-					<ul className="navbar-nav me-auto mb-2 mb-lg-0">
+					<ul className="navbar-nav me-auto mb-2 mb-lg-0 flex-fill">
 						<li className="nav-item">
 							<NavLink
 								className="nav-link"
@@ -55,7 +55,7 @@ const Nav = ({ user, isAdmin }) => {
 						)}
 						{user ? (
 							<>
-								<li className="nav-item">
+								<li className="nav-item ms-auto">
 									<NavLink
 										className="nav-link"
 										aria-current="page"
@@ -69,7 +69,7 @@ const Nav = ({ user, isAdmin }) => {
 							</>
 						) : (
 							<>
-								<li className="nav-item">
+								<li className="nav-item ms-auto">
 									<NavLink
 										className="nav-link"
 										aria-current="page"

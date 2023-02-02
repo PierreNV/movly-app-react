@@ -8,21 +8,33 @@ const ListGroup = ({
 	onItemClick,
 }) => {
 	return (
-		<div
-			className="btn-group d-flex flex-wrap mb-2"
-			role="group">
-			{items.map((item) => (
-				<button
-					key={item[valueProperty]}
-					className={
-						item === selectedItem
-							? "flex-fill btn btn-light active"
-							: "flex-fill btn btn-light"
-					}
-					onClick={() => onItemClick(item)}>
-					{item[textProperty]}
-				</button>
-			))}
+		<div className="btn-group dropend mb-2">
+			<button
+				className="btn btn-outline-primary dropdown-toggle"
+				type="button"
+				id="dropdownMenuClickableInside"
+				data-bs-toggle="dropdown"
+				data-bs-auto-close="outside"
+				aria-expanded="false">
+				Genres
+			</button>
+			<div
+				className="dropdown-menu p-0"
+				aria-labelledby="dropdownMenuClickableInside">
+				<div className="btn-group">
+					{items.map((item) => (
+						<button
+							key={item[valueProperty]}
+							type="button"
+							className={
+								item === selectedItem ? "btn btn-light active" : "btn btn-light"
+							}
+							onClick={() => onItemClick(item)}>
+							{item[textProperty]}
+						</button>
+					))}
+				</div>
+			</div>
 		</div>
 	);
 };

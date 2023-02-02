@@ -21,7 +21,7 @@ class Movies extends Component {
 
 	async componentDidMount() {
 		const { data } = await getGenres();
-		const genres = [{ _id: "", name: "All Genres" }, ...data];
+		const genres = [{ _id: "", name: "All" }, ...data];
 		const { data: allMovies } = await getMovies();
 		this.setState({
 			allMovies,
@@ -103,9 +103,7 @@ class Movies extends Component {
 	getSelectedGenreName = (selectedGenre) => {
 		if (selectedGenre) {
 			const selectedGenreName = `${selectedGenre["name"]}`;
-			return selectedGenreName.toLowerCase() !== "all genres"
-				? selectedGenreName.toLowerCase()
-				: null;
+			return selectedGenreName !== "All" ? selectedGenreName.toLowerCase() : null;
 		}
 	};
 

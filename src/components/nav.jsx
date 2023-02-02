@@ -55,7 +55,7 @@ const Nav = ({ user, isAdmin }) => {
 						)}
 						{user ? (
 							<>
-								<li className="nav-item ms-auto">
+								<li className="nav-item ms-lg-auto">
 									<NavLink
 										className="nav-link"
 										aria-current="page"
@@ -69,7 +69,7 @@ const Nav = ({ user, isAdmin }) => {
 							</>
 						) : (
 							<>
-								<li className="nav-item ms-auto">
+								<li className="nav-item ms-lg-auto">
 									<NavLink
 										className="nav-link"
 										aria-current="page"

@@ -62,7 +62,7 @@ class LoginForm extends Form {
 		}
 		return (
 			<div className="form-signin text-center m-auto">
-				<h1 className="h3 mb-5 fw-normal">Please sign in</h1>
+				<h1 className="h3 mb-5 fw-normal">Sign in</h1>
 				<form className="col-5 m-auto">
 					{this.renderInputField("username", "email", "email", "username", true)}
 					{this.renderInputField(

@@ -122,7 +122,7 @@ class Movies extends Component {
 							the database.
 						</p>
 					) : (
-						<p>Please wait...</p>
+						<p>API starting, please wait...</p>
 					)}
 					<div className="mb-2">
 						<ListGroup

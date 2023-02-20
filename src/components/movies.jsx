@@ -5,7 +5,7 @@ import ListGroup from "./common/listGroup";
 import Pagination from "./common/pagination";
 import SearchField from "./common/searchField";
 import { paginate } from "../utilities/paginate";
-import { getMovies, deleteMovie } from "../services/servMovies";
+import { getMovies, deleteMovie, likeMovie } from "../services/servMovies";
 import { getGenres } from "../services/servGenres";
 import { Link } from "react-router-dom";
 
@@ -50,19 +50,24 @@ class Movies extends Component {
 		this.setState({ currentPage: page });
 	};
 
-	likeMovieHandler = (movie) => {
-		const moviesArray = [...this.state.allMovies];
-		const index = moviesArray.indexOf(movie);
-		moviesArray[index] = { ...moviesArray[index] };
-		moviesArray[index].liked = !moviesArray[index].liked;
-		this.setState({ allMovies: moviesArray });
+	likeMovieHandler = async (movie) => {
+		const initialMovies = [...this.state.allMovies];
+		const allMovies = [...this.state.allMovies];
+		const index = allMovies.indexOf(movie);
+		allMovies[index] = { ...allMovies[index] };
+		allMovies[index].liked = !allMovies[index].liked;
+		this.setState({ allMovies });
+		try {
+			await likeMovie(movie)
+		} catch (error) {
+			this.setState({ allMovies: initialMovies });
+		}
 	};
 
 	removeMovieHandler = async (movie) => {
 		const initialMovies = this.state.allMovies;
 		const allMovies = initialMovies.filter((movies) => movies._id !== movie._id);
 		this.setState({ allMovies });
-
 		try {
 			await deleteMovie(movie._id);
 		} catch (error) {

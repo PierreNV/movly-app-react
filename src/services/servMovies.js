@@ -1,4 +1,5 @@
 import servHTTP from "./servHTTP";
+
 const endPoint = "/movies/";
 function movieURL(id) {
 	return endPoint + id;
@@ -21,3 +22,7 @@ export function saveMovie(movie) {
 	}
 	return servHTTP.post(endPoint, movie);
 }
+export function likeMovie(movie) {
+			return servHTTP.put(endPoint + movie._id, {liked: !movie.liked});
+		}			
+

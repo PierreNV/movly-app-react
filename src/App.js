@@ -13,6 +13,7 @@ import RegisterForm from "./components/registerForm";
 import UserLock from "./components/common/userLock";
 import AdminLock from "./components/common/adminLock";
 import "./App.css";
+import Profile from "./components/profile";
 
 class App extends Component {
 	state = {};
@@ -70,6 +71,10 @@ class App extends Component {
 						<Route
 							path="/rentals"
 							element={<Rentals />}
+						/>
+						<Route
+							path="/profile"
+							element={<Profile user={this.state.user}/>}
 						/>
 						<Route
 							path="/not-found"

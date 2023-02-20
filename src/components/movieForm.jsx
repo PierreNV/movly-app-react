@@ -17,8 +17,8 @@ class MovieForm extends Form {
 		_id: Joi.string(),
 		title: Joi.string().max(50).label("Title"),
 		genreId: Joi.string().label("Genre"),
-		numberInStock: Joi.number().max(10).label("Stock"),
-		dailyRentalRate: Joi.number().max(10).label("Rating"),
+		numberInStock: Joi.number().min(0).max(10).label("Stock"),
+		dailyRentalRate: Joi.number().min(0).max(10).label("Rating"),
 	});
 
 	async componentDidMount() {

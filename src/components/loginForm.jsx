@@ -61,7 +61,7 @@ class LoginForm extends Form {
 			);
 		}
 		return (
-			<div className="mb-2">
+			<div className="mb-5">
 				<div className="form-signin text-center m-5 d-flex flex-column">
 					<h1 className="h3 mb-5 fw-normal">Sign in</h1>
 					<form className="col-sm-5 m-auto">

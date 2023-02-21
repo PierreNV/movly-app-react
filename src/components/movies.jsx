@@ -120,7 +120,7 @@ class Movies extends Component {
 
 		return (
 			<>
-				<div className="mb-2">
+				<div className="mb-5">
 					{itemsCount ? (
 						<p className="pb-2">
 							We have {itemsCount} {this.getSelectedGenreName(selectedGenre)} movies in

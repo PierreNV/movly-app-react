@@ -1,6 +1,6 @@
 import React from "react";
 const Home = () => {
-	return <div className="mb-2">
+	return <div className="mb-5">
 		<h1 className="h3 mb-5 fw-normal">Welcome to Movly</h1>
 		<p>Movly is a fictive react application intended to demonstrate some of my react JS knowledge aquired along my training.</p>
 		<p>First, you want to create a user account that grants you access to a few extra functionalities such as likes or editing movies details. Some of these functionalities are admin only and may appear disabled to you.</p>

@@ -74,7 +74,7 @@ class LoginForm extends Form {
 						)}
 						{this.renderButton("Sign in", this.submitHandler)}
 						<div className="mb-3">
-							<a href="/register">Register</a>
+							<a href="/register">Create an account</a>
 						</div>
 					</form>
 				</div>

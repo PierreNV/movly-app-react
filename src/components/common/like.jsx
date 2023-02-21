@@ -2,16 +2,16 @@ import React from "react";
 
 /* using sfc mod */
 
-const Heart = (props) => {
+const Like = (props) => {
 	let heart = "fa fa-heart";
 	if (!props.liked) heart += "-o";
 	return (
 		<i
 			className={heart}
 			aria-hidden="true"
-			style={{ cursor: "pointer" }}
+			role="button"
 			onClick={props.onLike}></i>
 	);
 };
 
-export default Heart;
+export default Like;

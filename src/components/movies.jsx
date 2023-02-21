@@ -113,7 +113,7 @@ class Movies extends Component {
 	};
 
 	render() {
-		const { isAdmin } = this.props;
+		const { user, isAdmin } = this.props;
 		const { genres, selectedGenre, pageSize, currentPage, sortedColumn } =
 			this.state;
 		const { itemsCount, currentPageMovies } = this.filterData();
@@ -145,6 +145,7 @@ class Movies extends Component {
 							onSort={this.sortHandler}
 							onRemove={this.removeMovieHandler}
 							onLike={this.likeMovieHandler}
+							user={user}
 							isAdmin={isAdmin}
 						/>
 						<div className="d-flex justify-content-between">

@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import Table from "./common/table";
-import Heart from "./common/like";
+import Like from "./common/like";
 
 class MoviesTable extends Component {
 	columns = [
@@ -14,12 +14,13 @@ class MoviesTable extends Component {
 		{ path: "numberInStock", label: "Stock" },
 		{ path: "dailyRentalRate", label: "Rate" },
 		{
-			key: "heart",
+			key: "like",
 			content: (movie) => (
-				<Heart
+				this.props.user ? (
+				<Like
 					onLike={() => this.props.onLike(movie)}
 					liked={movie.liked}
-				/>
+				/>) : null
 			),
 		},
 		{

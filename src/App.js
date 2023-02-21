@@ -58,7 +58,7 @@ class App extends Component {
 						/>
 						<Route
 							path="/movies/*"
-							element={<Movies isAdmin={this.state.isAdmin} />}
+							element={<Movies user={this.state.user} isAdmin={this.state.isAdmin} />}
 						/>
 						<Route
 							path="/movies/:id"

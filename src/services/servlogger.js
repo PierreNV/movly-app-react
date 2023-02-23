@@ -1,5 +1,5 @@
 function log(error) {
-	error.stack ? console.log(error.stack) : console.log(error.message);
+	error.stack ? console.log(error.stack) : console.table(error);
 	alert(error.message);
 }
 

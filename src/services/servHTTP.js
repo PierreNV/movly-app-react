@@ -1,5 +1,5 @@
 import axios from "axios";
-import {servlogger} from "./servLogger"
+import {servlogger} from "./servLogger.js"
 
 axios.defaults.baseURL = process.env.REACT_APP_API_URL;
 

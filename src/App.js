@@ -16,75 +16,57 @@ import "./App.css";
 import Profile from "./components/profile";
 
 class App extends Component {
-	state = {};
+  state = {};
 
-	async componentDidMount() {
-		const user = await getCurrentUser();
-		if (user) this.setState({ user });
-		if (user && user.isAdmin) this.setState({ isAdmin: true });
-	}
+  async componentDidMount() {
+    const user = await getCurrentUser();
+    if (user) this.setState({ user });
+    if (user && user.isAdmin) this.setState({ isAdmin: true });
+  }
 
-	render() {
-		return (
-			<>
-				<header>
-					<Nav
-						user={this.state.user}
-						isAdmin={this.state.isAdmin}
-					/>
-				</header>
-				<main className="container-xxl my-md-4 bd-layout">
-					<Routes>
-						<Route
-							path="*"
-							element={
-								<Navigate
-									to="/not-found"
-									replace={true}
-								/>
-							}
-						/>
-						<Route
-							path="/"
-							element={<Home />}
-						/>
-						<Route
-							path="/login"
-							element={<LoginForm user={this.state.user} />}
-						/>
-						<Route
-							path="/register"
-							element={<RegisterForm />}
-						/>
-						<Route
-							path="/movies/*"
-							element={<Movies user={this.state.user} isAdmin={this.state.isAdmin} />}
-						/>
-						<Route
-							path="/movies/:id"
-							element={<UserLock component={MovieForm} />}
-						/>
-						<Route
-							path="/customers"
-							element={<AdminLock component={Customers} />}
-						/>
-						<Route
-							path="/rentals"
-							element={<Rentals />}
-						/>
-						<Route
-							path="/profile"
-							element={<Profile user={this.state.user}/>}
-						/>
-						<Route
-							path="/not-found"
-							element={<NotFound />}
-						/>
-					</Routes>
-				</main>
-			</>
-		);
-	}
+  render() {
+    return (
+      <>
+        <header>
+          <Nav user={this.state.user} isAdmin={this.state.isAdmin} />
+        </header>
+        <main className="container-xxl my-md-4 bd-layout">
+          <Routes>
+            <Route
+              path="*"
+              element={<Navigate to="/not-found" replace={true} />}
+            />
+            <Route path="/" element={<Home />} />
+            <Route
+              path="/login"
+              element={<LoginForm user={this.state.user} />}
+            />
+            <Route path="/register" element={<RegisterForm />} />
+            <Route
+              path="/movies/*"
+              element={
+                <Movies user={this.state.user} isAdmin={this.state.isAdmin} />
+              }
+            />
+            <Route
+              path="/movies/:id"
+              element={<UserLock component={MovieForm} />}
+            />
+            <Route
+              path="/customers"
+              element={<AdminLock component={Customers} />}
+            />
+            <Route path="/rentals" element={<Rentals />} />
+            <Route
+              path="/profile"
+              element={<Profile user={this.state.user} />}
+            />
+            <Route path="/not-found" element={<NotFound />} />
+          </Routes>
+        </main>
+      </>
+    );
+  }
 }
 
 export default App;

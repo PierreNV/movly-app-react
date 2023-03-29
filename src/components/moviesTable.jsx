@@ -40,7 +40,7 @@ class MoviesTable extends Component {
 	render() {
 		const { currentPageMovies, sortedColumn, onSort } = this.props;
 		return (
-			<div className="table-responsive-xxl">
+			<div className="table-responsive-xxl rounded mb-2">
 				<Table
 					columns={this.columns}
 					data={currentPageMovies}

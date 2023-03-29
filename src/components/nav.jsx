@@ -4,7 +4,7 @@ import Logout from "./logout";
 
 const Nav = ({ user, isAdmin }) => {
 	return (
-		<nav className="navbar navbar-expand-lg navbar-light bg-light">
+		<nav className="navbar navbar-expand-lg navbar-dark bg-dark">
 			<div className="container-fluid">
 				<NavLink
 					className="navbar-brand"

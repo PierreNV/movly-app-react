@@ -31,38 +31,40 @@ class App extends Component {
           <Nav user={this.state.user} isAdmin={this.state.isAdmin} />
         </header>
         <main className="container-xxl my-md-4 bd-layout">
-          <Routes>
-            <Route
-              path="*"
-              element={<Navigate to="/not-found" replace={true} />}
-            />
-            <Route path="/" element={<Home />} />
-            <Route
-              path="/login"
-              element={<LoginForm user={this.state.user} />}
-            />
-            <Route path="/register" element={<RegisterForm />} />
-            <Route
-              path="/movies/*"
-              element={
-                <Movies user={this.state.user} isAdmin={this.state.isAdmin} />
-              }
-            />
-            <Route
-              path="/movies/:id"
-              element={<UserLock component={MovieForm} />}
-            />
-            <Route
-              path="/customers"
-              element={<AdminLock component={Customers} />}
-            />
-            <Route path="/rentals" element={<Rentals />} />
-            <Route
-              path="/profile"
-              element={<Profile user={this.state.user} />}
-            />
-            <Route path="/not-found" element={<NotFound />} />
-          </Routes>
+          <div className="m-3">
+            <Routes>
+              <Route
+                path="*"
+                element={<Navigate to="/not-found" replace={true} />}
+              />
+              <Route path="/" element={<Home />} />
+              <Route
+                path="/login"
+                element={<LoginForm user={this.state.user} />}
+              />
+              <Route path="/register" element={<RegisterForm />} />
+              <Route
+                path="/movies/*"
+                element={
+                  <Movies user={this.state.user} isAdmin={this.state.isAdmin} />
+                }
+              />
+              <Route
+                path="/movies/:id"
+                element={<UserLock component={MovieForm} />}
+              />
+              <Route
+                path="/customers"
+                element={<AdminLock component={Customers} />}
+              />
+              <Route path="/rentals" element={<Rentals />} />
+              <Route
+                path="/profile"
+                element={<Profile user={this.state.user} />}
+              />
+              <Route path="/not-found" element={<NotFound />} />
+            </Routes>
+          </div>
         </main>
       </>
     );

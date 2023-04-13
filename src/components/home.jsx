@@ -4,7 +4,7 @@ const Home = () => {
     <>
       <h1 className="h3 mb-5 fw-normal">Welcome to Movly</h1>
       <p>
-        Movly is a fictive react application intended to demonstrate some of my
+        Movly is a fictive movie library intended to demonstrate some of my
         react JS knowledge aquired along my training.
       </p>
       <p>

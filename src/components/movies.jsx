@@ -130,7 +130,10 @@ class Movies extends Component {
             movies in the database.
           </p>
         ) : (
-          <p>API starting, please wait...</p>
+          <p className="d-flex justify-content-between">
+            API starting, please wait...
+            <span className="spinner-border spinner-border-sm"></span>
+          </p>
         )}
         <div className="mb-2">
           <ListGroup

@@ -18,8 +18,8 @@ const Home = () => {
         helped me simplifying this task thanks to methods chaining and the range
         method. As mentionned earlier, you have the possiblity to edit the data
         by clicking on the movie title of your choice once you are logged in.
-        Entries are checked against a validation schema before being transmitted
-        to the server.
+        Entries are checked against a front-end and back-end API validation
+        schema before being store on the db.
       </p>
       <p>
         This training project gave me the chance to practice the implementation

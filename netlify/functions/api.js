@@ -13,10 +13,11 @@ require("./startup/config").default();
 require("./startup/validation")();
 require("./startup/routes").default(api);
 
-const server = serverless(api);
+// const server = serverless(api);
 
 // import { get } from "config";
 // const port = process.env.PORT || get("port");
 // const server = api.listen(port, () => console.log(`Listening on port ${port}...`));
 
-export default server;
+// export default server;
+export const handler = serverless(api);

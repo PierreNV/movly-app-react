@@ -4,6 +4,7 @@ import _ from "lodash";
 import { User } from "../models/user";
 // const mongoose = require("mongoose");
 import { Router } from "express";
+
 const router = Router();
 
 router.post("/", async (req, res) => {

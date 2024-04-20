@@ -1,25 +1,27 @@
-const Joi = require("joi");
-const mongoose = require("mongoose");
+import { object, string } from "joi";
+import { Schema, model } from "mongoose";
 
-const genreSchema = new mongoose.Schema({
-	name: {
-		type: String,
-		required: true,
-		maxlength: 50,
-	},
+const genreSchema = new Schema({
+  name: {
+    type: String,
+    required: true,
+    maxlength: 50,
+  },
 });
 
-const Genre = mongoose.model("Genre", genreSchema);
+const Genre = model("Genre", genreSchema);
 
 function validateGenre(genre) {
-	const schema = Joi.object({
-		name: Joi.string().max(50),
-	});
-	const { error } = schema.validate(genre);
-	if (error) console.log(error);
-	return genre;
+  const schema = object({
+    name: string().max(50),
+  });
+  const { error } = schema.validate(genre);
+  if (error) console.log(error);
+  return genre;
 }
 
-exports.genreSchema = genreSchema;
-exports.Genre = Genre;
-exports.validate = validateGenre;
+const _genreSchema = genreSchema;
+export { _genreSchema as genreSchema };
+const _Genre = Genre;
+export { _Genre as Genre };
+export const validate = validateGenre;

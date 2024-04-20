@@ -10,7 +10,7 @@ const api = express();
 // api.use(cors());
 require("./startup/db").default();
 require("./startup/config").default();
-require("./startup/validation")();
+require("./startup/validation").default();
 require("./startup/routes").default(api);
 
 // const server = serverless(api);

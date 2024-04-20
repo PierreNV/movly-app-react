@@ -1,14 +1,14 @@
-const winston = require('winston');
+import { error } from "winston";
 
-module.exports = function(err, req, res, next){
-  winston.error(err.message, err);
+export default function (err, req, res, next) {
+  error(err.message, err);
 
   // error
   // warn
   // info
   // verbose
-  // debug 
+  // debug
   // silly
 
-  res.status(500).send('Something failed.');
+  res.status(500).send("Something failed.");
 }

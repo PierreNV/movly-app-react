@@ -1,13 +1,13 @@
-const { Rental, validate } = require("../models/rental");
-const { Movie } = require("../models/movie");
-const { Customer } = require("../models/customer");
-const auth = require("../middleware/auth");
+import { Rental, validate } from "../models/rental";
+import { Movie } from "../models/movie";
+import { Customer } from "../models/customer";
+import auth from "../middleware/auth";
 // const mongoose = require("mongoose");
-const Fawn = require("fawn");
-const express = require("express");
-const router = express.Router();
+import { init, Task } from "fawn";
+import { Router } from "express";
+const router = Router();
 
-Fawn.init("mongodb://127.0.0.1:27017/api");
+init("mongodb://127.0.0.1:27017/api");
 // Fawn.init("mongoose");
 
 router.get("/", auth, async (req, res) => {
@@ -41,7 +41,7 @@ router.post("/", auth, async (req, res) => {
   });
 
   try {
-    new Fawn.Task()
+    new Task()
       .save("rentals", rental)
       .update(
         "movies",
@@ -66,4 +66,4 @@ router.get("/:id", [auth], async (req, res) => {
   res.send(rental);
 });
 
-module.exports = router;
+export default router;

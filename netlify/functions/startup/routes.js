@@ -15,7 +15,6 @@ export default function (api) {
   api.use("/api/rentals", rentals);
   api.use("/api/users", users);
   api.use("/api/auth", auth);
-  api.use("/api/returns", returns);
   api.use(error);
   api.use(json());
 }

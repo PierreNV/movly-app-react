@@ -1,6 +1,4 @@
 import express from "express";
-import serverless from "serverless-http";
-import { Router } from "express";
 
 const api = express();
 

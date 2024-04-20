@@ -7,6 +7,7 @@ import users from "../routes/users";
 import auth from "../routes/auth";
 import returns from "../routes/returns";
 import error from "../middleware/error";
+import serverless from "serverless-http";
 
 export default function (api) {
   const router = Router();

@@ -1,4 +1,4 @@
-import { Router, json } from "express";
+import { json, Router } from "express";
 import genres from "../routes/genres";
 import customers from "../routes/customers";
 import movies from "../routes/movies";
@@ -7,10 +7,10 @@ import users from "../routes/users";
 import auth from "../routes/auth";
 import returns from "../routes/returns";
 import error from "../middleware/error";
-import serverless from "serverless-http";
+
+const router = Router();
 
 export default function (api) {
-  const router = Router();
   router.get("/api/genres", genres);
   router.get("/api/customers", customers);
   router.get("/api/movies", movies);
@@ -21,5 +21,4 @@ export default function (api) {
   router.get(error);
   api.use(json());
   api.use("/api/", router);
-  return serverless(api);
 }

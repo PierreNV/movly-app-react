@@ -1,4 +1,5 @@
 import express from "express";
+import serverless from "serverless-http";
 
 const api = express();
 
@@ -12,8 +13,10 @@ require("./startup/config")();
 require("./startup/validation")();
 require("./startup/routes").default(api);
 
+const server = serverless(api);
+
 // import { get } from "config";
 // const port = process.env.PORT || get("port");
 // const server = api.listen(port, () => console.log(`Listening on port ${port}...`));
 
-// export default server;
+export default server;

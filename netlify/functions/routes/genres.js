@@ -2,7 +2,6 @@ import validateObjectId from "../middleware/validateObjectId";
 import auth from "../middleware/auth";
 import admin from "../middleware/admin";
 import { Genre, validate } from "../models/genre";
-// import mongoose from "mongoose";
 import { Router } from "express";
 
 const router = Router();

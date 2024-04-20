@@ -2,7 +2,6 @@ import { object, string } from "joi";
 import { compare } from "bcrypt";
 import _ from "lodash";
 import { User } from "../models/user";
-// const mongoose = require("mongoose");
 import { Router } from "express";
 
 const router = Router();

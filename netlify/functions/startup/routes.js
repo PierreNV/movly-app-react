@@ -11,13 +11,13 @@ import error from "../middleware/error";
 const router = Router();
 
 export default function (api) {
-  router.get("/api/genres", genres);
-  router.get("/api/customers", customers);
-  router.get("/api/movies", movies);
-  router.get("/api/rentals", rentals);
-  router.get("/api/users", users);
-  router.get("/api/auth", auth);
-  router.get("/api/returns", returns);
+  router.get("/genres", genres);
+  router.get("/customers", customers);
+  router.get("/movies", movies);
+  router.get("/rentals", rentals);
+  router.get("/users", users);
+  router.get("/auth", auth);
+  router.get("/returns", returns);
   router.get(error);
   api.use(json());
   api.use("/api/", router);

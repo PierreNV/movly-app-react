@@ -1,13 +1,10 @@
 import express from "express";
 import serverless from "serverless-http";
+import cors from "cors";
 
 const api = express();
-
-import cors from "cors";
 api.use(cors());
 
-// import cors from "cors";
-// api.use(cors());
 require("./startup/db").default();
 require("./startup/config").default();
 require("./startup/validation").default();

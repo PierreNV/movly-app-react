@@ -2,7 +2,7 @@ import React from "react";
 import Joi from "joi-browser";
 import Form from "./common/form";
 import { withRouter } from "./common/withRouter";
-import { login } from "../services/servAuth";
+import { login } from "../services/servAuth.mjs";
 import { Navigate } from "react-router-dom";
 
 class LoginForm extends Form {
@@ -59,19 +59,8 @@ class LoginForm extends Form {
         <div className="form-signin text-center m-5 d-flex flex-column">
           <h1 className="h3 mb-5 fw-normal">Sign in</h1>
           <form className="col-sm-5 m-auto">
-            {this.renderInputField(
-              "username",
-              "email",
-              "email",
-              "username",
-              true
-            )}
-            {this.renderInputField(
-              "password",
-              "password",
-              "password",
-              "current-password"
-            )}
+            {this.renderInputField("username", "email", "email", "username", true)}
+            {this.renderInputField("password", "password", "password", "current-password")}
             {this.renderButton("Sign in", this.submitHandler)}
             <div className="mb-3">
               <a href="/register">Create an account</a>

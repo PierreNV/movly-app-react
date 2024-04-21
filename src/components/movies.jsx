@@ -5,8 +5,8 @@ import ListGroup from "./common/listGroup";
 import Pagination from "./common/pagination";
 import SearchField from "./common/searchField";
 import { paginate } from "../utilities/paginate";
-import { getMovies, deleteMovie, likeMovie } from "../services/servMovies";
-import { getGenres } from "../services/servGenres";
+import { getMovies, deleteMovie, likeMovie } from "../services/servMovies.mjs";
+import { getGenres } from "../services/servGenres.mjs";
 import { Link } from "react-router-dom";
 
 class Movies extends Component {
@@ -66,9 +66,7 @@ class Movies extends Component {
 
   removeMovieHandler = async (movie) => {
     const initialMovies = this.state.allMovies;
-    const allMovies = initialMovies.filter(
-      (movies) => movies._id !== movie._id
-    );
+    const allMovies = initialMovies.filter((movies) => movies._id !== movie._id);
     this.setState({ allMovies });
     try {
       await deleteMovie(movie._id);
@@ -78,28 +76,11 @@ class Movies extends Component {
   };
 
   filterData = () => {
-    const {
-      allMovies,
-      selectedGenre,
-      pageSize,
-      currentPage,
-      sortedColumn,
-      searchInput,
-    } = this.state;
+    const { allMovies, selectedGenre, pageSize, currentPage, sortedColumn, searchInput } = this.state;
     let moviesBy = allMovies;
-    if (searchInput)
-      moviesBy = allMovies.filter((movie) =>
-        movie.title.toLowerCase().match(searchInput.toLowerCase())
-      );
-    else if (selectedGenre && selectedGenre._id)
-      moviesBy = allMovies.filter(
-        (movie) => movie.genre._id === selectedGenre._id
-      );
-    const moviesSorted = _.orderBy(
-      moviesBy,
-      [sortedColumn.path],
-      [sortedColumn.order]
-    );
+    if (searchInput) moviesBy = allMovies.filter((movie) => movie.title.toLowerCase().match(searchInput.toLowerCase()));
+    else if (selectedGenre && selectedGenre._id) moviesBy = allMovies.filter((movie) => movie.genre._id === selectedGenre._id);
+    const moviesSorted = _.orderBy(moviesBy, [sortedColumn.path], [sortedColumn.order]);
     const currentPageMovies = paginate(moviesSorted, currentPage, pageSize);
     return {
       itemsCount: moviesSorted.length,
@@ -110,24 +91,20 @@ class Movies extends Component {
   getSelectedGenreName = (selectedGenre) => {
     if (selectedGenre) {
       const selectedGenreName = `${selectedGenre["name"]}`;
-      return selectedGenreName !== "All"
-        ? selectedGenreName.toLowerCase()
-        : null;
+      return selectedGenreName !== "All" ? selectedGenreName.toLowerCase() : null;
     }
   };
 
   render() {
     const { user, isAdmin } = this.props;
-    const { genres, selectedGenre, pageSize, currentPage, sortedColumn } =
-      this.state;
+    const { genres, selectedGenre, pageSize, currentPage, sortedColumn } = this.state;
     const { itemsCount, currentPageMovies } = this.filterData();
 
     return (
       <>
         {itemsCount ? (
           <p className="pb-2">
-            We have {itemsCount} {this.getSelectedGenreName(selectedGenre)}{" "}
-            movies in the database.
+            We have {itemsCount} {this.getSelectedGenreName(selectedGenre)} movies in the database.
           </p>
         ) : (
           <p className="d-flex justify-content-between">
@@ -136,15 +113,8 @@ class Movies extends Component {
           </p>
         )}
         <div className="mb-2">
-          <ListGroup
-            items={genres}
-            selectedItem={selectedGenre}
-            onItemClick={this.selectGenreHandler}
-          />
-          <SearchField
-            value={this.state.searchInput}
-            onSearch={this.searchHandler}
-          />
+          <ListGroup items={genres} selectedItem={selectedGenre} onItemClick={this.selectGenreHandler} />
+          <SearchField value={this.state.searchInput} onSearch={this.searchHandler} />
           <MoviesTable
             currentPageMovies={currentPageMovies}
             sortedColumn={sortedColumn}
@@ -164,12 +134,7 @@ class Movies extends Component {
                 Add
               </button>
             )}
-            <Pagination
-              moviesAmount={itemsCount}
-              pageSize={pageSize}
-              currentPage={currentPage}
-              onPageClick={this.pageClickHandler}
-            />
+            <Pagination moviesAmount={itemsCount} pageSize={pageSize} currentPage={currentPage} onPageClick={this.pageClickHandler} />
           </div>
         </div>
       </>

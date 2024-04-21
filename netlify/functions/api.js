@@ -3,8 +3,8 @@ import serverless from "serverless-http";
 
 const api = express();
 
-// import cors from "cors";
-// api.use(cors());
+import cors from "cors";
+api.use(cors());
 
 // import cors from "cors";
 // api.use(cors());

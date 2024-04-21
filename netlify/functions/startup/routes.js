@@ -16,5 +16,4 @@ export default function (api) {
   api.use("/api/users", users);
   api.use(error);
   api.use(json());
-  console.log("express api is started");
 }

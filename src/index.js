@@ -3,7 +3,7 @@ import ReactDOM from "react-dom/client";
 import { BrowserRouter } from "react-router-dom";
 import "./index.css";
 import "bootstrap/dist/css/bootstrap.css";
-import "bootstrap/dist/js/bootstrap";
+import "bootstrap/dist/js/bootstrap.js";
 import "font-awesome/css/font-awesome.css";
 import App from "./App.js";
 import reportWebVitals from "./reportWebVitals.js";

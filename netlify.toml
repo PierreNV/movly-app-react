@@ -1,7 +1,7 @@
 [build.environment]
-    NODE_VERSION = "20"
+    NODE_VERSION = "16"
 [functions]
-  external_node_modules = ["express", "bcrypt", "config", "cors", "express-async-errors", "fawn", "joi-objectid", "jsonwebtoken", "moment", "mongoose", "winston", "winston-mongodb", "serverless-http"]
+  external_node_modules = ["express"]
   node_bundler = "esbuild"
 [[redirects]]
   force = true

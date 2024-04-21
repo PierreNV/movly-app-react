@@ -5,7 +5,6 @@ import movies from "../routes/movies";
 import rentals from "../routes/rentals";
 import users from "../routes/users";
 import auth from "../routes/auth";
-// import returns from "../routes/returns";
 import error from "../middleware/error";
 
 export default function (api) {
@@ -17,4 +16,5 @@ export default function (api) {
   api.use("/api/users", users);
   api.use(error);
   api.use(json());
+  console.log("express api is started");
 }

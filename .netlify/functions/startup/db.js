@@ -1,7 +1,7 @@
 // const mongoose = require("mongoose");
 const { MongoClient } = require("mongodb");
-const config = require("config");
-const db = config.get("db");
+// const config = require("config");
+// const db = config.get("db");
 
 // const URI = config.get("URI");
 // const database = config.get("database");
@@ -12,7 +12,7 @@ const db = config.get("db");
 // };
 
 module.exports = function () {
-  const mongoClient = new MongoClient(db);
+  const mongoClient = new MongoClient(process.env.db);
 
   try {
     mongoClient.connect();

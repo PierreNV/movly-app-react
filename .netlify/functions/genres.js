@@ -3,7 +3,7 @@ const { MongoClient } = require("mongodb");
 const mongoClient = new MongoClient(process.env.DB);
 const clientPromise = mongoClient.connect();
 
-const handler = async (event) => {
+const handlerGenres = async (event) => {
   try {
     const database = await clientPromise.db(process.env.URI);
     const collection = database.collection(process.env.COLLECTION_GENRES);
@@ -14,4 +14,4 @@ const handler = async (event) => {
   }
 };
 
-module.export = { handler };
+module.export = { handlerGenres };

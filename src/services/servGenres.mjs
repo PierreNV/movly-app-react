@@ -1,6 +1,6 @@
-import servHTTP from "./servHTTP.mjs";
+// import servHTTP from "./servHTTP.mjs";
 const endPoint = "/genres";
 
 export function getGenres() {
-  return servHTTP.get(endPoint);
+  return fetch("./netlify/functions/genres");
 }

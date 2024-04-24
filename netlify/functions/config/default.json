@@ -1,6 +1,0 @@
-{
-	"jwtPrivateKey": "defaultPrivateKey",
-	"db": "mongodb://127.0.0.1:27017/api",
-	"port": "27017",
-	"requiresAuth": true
-}

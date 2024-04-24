@@ -5,7 +5,6 @@ module.exports = function () {
 
   try {
     mongoClient.connect();
-    console.log("connected to db");
   } catch (error) {
     console.log("fail to connect to db");
   }

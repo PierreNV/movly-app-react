@@ -1,7 +1,7 @@
 [build.environment]
     NODE_VERSION = "16"
 [functions]
-  external_node_modules = ["express"]
+
 [[redirects]]
   force = true
   from = "/api/*"

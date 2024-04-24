@@ -1,6 +1,6 @@
 import servHTTP from "./servHTTP.mjs";
 
-const endPoint = "/movies/";
+const endPoint = "movies/";
 function movieURL(id) {
   return endPoint + id;
 }

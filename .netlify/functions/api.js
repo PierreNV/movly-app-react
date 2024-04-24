@@ -19,7 +19,7 @@ require("./startup/routes")(api);
 // export default server;
 // export const handler = serverless(api);
 
-const handler = async (event, endpoint) => {
+const handler = async (event) => {
   try {
     const database = await clientPromise.db(process.env.db);
     const results = await database.find({});

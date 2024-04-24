@@ -21,7 +21,7 @@ require("./startup/routes")(api);
 
 const handler = async (event, endpoint) => {
   try {
-    const database = await clientPromise.db(process.env.DB);
+    const database = await clientPromise.db(process.env.db);
     const results = await database.find({});
     return { statusCode: 200, body: JSON.stringify(results) };
   } catch (error) {}

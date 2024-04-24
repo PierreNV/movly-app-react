@@ -1,5 +1,5 @@
-import { response } from "express";
-import servHTTP from "./servHTTP.mjs";
+// import { response } from "express";
+// import servHTTP from "./servHTTP.mjs";
 // const endPoint = "genres";
 
 export async function getGenres() {

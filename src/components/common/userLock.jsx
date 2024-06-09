@@ -1,5 +1,4 @@
 import React from "react";
-import { getCurrentUser } from "../../services/servAuth.mjs";
 import { Navigate, useLocation } from "react-router-dom";
 
 const UserLock = ({ component: Component, user }) => {

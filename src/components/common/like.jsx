@@ -1,17 +1,10 @@
 import React from "react";
-
-/* using sfc mod */
+import { BiLike, BiSolidLike } from "react-icons/bi";
 
 const Like = (props) => {
-	let heart = "fa fa-heart";
-	if (!props.liked) heart += "-o";
-	return (
-		<i
-			className={heart}
-			aria-hidden="true"
-			role="button"
-			onClick={props.onLike}></i>
-	);
+  if (props.liked) {
+    <BiSolidLike />;
+  } else return <BiLike />;
 };
 
 export default Like;

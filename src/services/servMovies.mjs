@@ -24,6 +24,7 @@ export async function getMovie(movieId) {
 export function deleteMovie(movieId) {
   servHTTP.delete(endPoint + movieId);
 }
+
 export function saveMovie(movie) {
   if (movie._id) {
     const data = { ...movie };
@@ -32,6 +33,7 @@ export function saveMovie(movie) {
   }
   return servHTTP.post(endPoint, movie);
 }
+
 export function likeMovie(movie) {
   return servHTTP.put(endPoint + movie._id, { liked: !movie.liked });
 }

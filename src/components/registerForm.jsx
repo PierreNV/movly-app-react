@@ -61,7 +61,6 @@ class RegisterForm extends Form {
         <div className="form-group text-center m-5 d-flex flex-column">
           <h1 className="h3 mb-5 fw-normal">Register</h1>
           <form className="col-sm-5 m-auto">
-            {this.renderInputField("username", "username", "text", "name", true)}
             {this.renderInputField("email", "email", "email", "username")}
             {this.renderInputField("password", "password", "password", "new-password")}
             {this.renderInputField("confirmPassword", "password confirmation", "password", "new-password")}

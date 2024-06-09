@@ -13,12 +13,12 @@ class LoginForm extends Form {
 
   schema = Joi.object().keys({
     username: Joi.string()
-      .max(20)
+      .max(30)
       .label("Your email")
       .options({ language: { any: { empty: "is required to login." } } }),
     password: Joi.string()
       .min(8)
-      .max(20)
+      .max(30)
       .regex(/^((?=(.*[\d0-9@&#$?%!|(){}[\]]){2,})(?=(.*[a-zA-Z]){2,}).{8,})$/)
       .label("Your password")
       .options({ language: { any: { empty: "is required to login." } } })

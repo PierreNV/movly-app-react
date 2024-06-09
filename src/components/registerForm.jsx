@@ -1,9 +1,9 @@
+// import { loginWithJWT } from "../services/servAuth.mjs";
 import React from "react";
 import Joi from "joi-browser";
 import Form from "./common/form";
-import { loginWithJWT } from "../services/servAuth.mjs";
 import { withRouter } from "./common/withRouter";
-import { register } from "../services/servUsers.mjs";
+import { register } from "../services/servAuth.mjs";
 
 class RegisterForm extends Form {
   state = {
@@ -14,13 +14,13 @@ class RegisterForm extends Form {
 
   schema = Joi.object().keys({
     username: Joi.string()
-      .max(20)
+      .max(30)
       .label("Your username")
       .options({ language: { any: { empty: "is required to register." } } }),
-    email: Joi.string().label("Your email").email().max(20),
+    email: Joi.string().label("Your email").email().max(30),
     password: Joi.string()
       .min(8)
-      .max(20)
+      .max(30)
       .regex(/^((?=(.*[\d0-9@&#$?%!|(){}[\]]){2,})(?=(.*[a-zA-Z]){2,}).{8,})$/)
       .label("Your password")
       .options({ language: { any: { empty: "is required to register." } } })
@@ -43,8 +43,7 @@ class RegisterForm extends Form {
 
   confirmSubmitHandler = async () => {
     try {
-      const res = await register(this.state.data);
-      if (res) loginWithJWT(res.headers["x-auth-token"]);
+      await register(this.state.data);
       this.props.navigate("/");
       this.props.navigate(0);
     } catch (error) {
@@ -68,7 +67,7 @@ class RegisterForm extends Form {
             {this.renderInputField("confirmPassword", "password confirmation", "password", "new-password")}
             {this.renderButton("Register", this.submitHandler)}
             <div className="mb-3">
-              <a href="/login">Already an account?</a>
+              <a href="/login">Already registered?</a>
             </div>
           </form>
         </div>

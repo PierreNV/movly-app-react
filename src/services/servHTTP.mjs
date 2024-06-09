@@ -2,6 +2,7 @@ import axios from "axios";
 import { servLogger } from "./servLog.mjs";
 
 axios.defaults.baseURL = process.env.REACT_APP_API_URL;
+axios.defaults.headers.common = { "Content-Type": "application/json", Accept: "application/json" };
 
 axios.interceptors.response.use(null, (error) => {
   const expectedError = error.response && error.response.status >= 400 && error.response.status < 500;
@@ -10,10 +11,6 @@ axios.interceptors.response.use(null, (error) => {
   }
   return Promise.reject(error);
 });
-
-export function setJWT(jwt) {
-  axios.defaults.headers.common["x-auth-token"] = jwt;
-}
 
 const axiosMethods = {
   get: axios.get,

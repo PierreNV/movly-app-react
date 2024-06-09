@@ -1,18 +1,28 @@
 import servHTTP from "./servHTTP.mjs";
 
-const endPoint = "movies/";
-function movieURL(id) {
-  return endPoint + id;
+const endPoint = `${process.env.REACT_APP_COLLECTION_MOVIES}`;
+const params = { secret: `${process.env.REACT_APP_SECRET}` };
+
+export async function getMovies() {
+  try {
+    const movies = await servHTTP.get(endPoint, { params: params });
+    return movies;
+  } catch (error) {
+    console.log(error);
+  }
 }
 
-export function getMovies() {
-  return servHTTP.get(endPoint);
+export async function getMovie(movieId) {
+  try {
+    const movies = await servHTTP.get(endPoint, { params: params });
+    return movies.data.find((movie) => movie._id === movieId);
+  } catch (error) {
+    console.log(error);
+  }
 }
-export function getMovie(movieId) {
-  return servHTTP.get(movieURL(movieId));
-}
+
 export function deleteMovie(movieId) {
-  servHTTP.delete(movieURL(movieId));
+  servHTTP.delete(endPoint + movieId);
 }
 export function saveMovie(movie) {
   if (movie._id) {

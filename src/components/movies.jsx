@@ -96,7 +96,7 @@ class Movies extends Component {
   };
 
   render() {
-    const { user, isAdmin } = this.props;
+    const { user } = this.props;
     const { genres, selectedGenre, pageSize, currentPage, sortedColumn } = this.state;
     const { itemsCount, currentPageMovies } = this.filterData();
 
@@ -122,10 +122,9 @@ class Movies extends Component {
             onRemove={this.removeMovieHandler}
             onLike={this.likeMovieHandler}
             user={user}
-            isAdmin={isAdmin}
           />
           <div className="d-flex justify-content-between">
-            {isAdmin ? (
+            {user?.isGlobalAdmin ? (
               <Link className="btn btn-primary" to="/movies/new">
                 Add
               </Link>

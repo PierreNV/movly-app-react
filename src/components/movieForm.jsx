@@ -37,7 +37,7 @@ class MovieForm extends Form {
       if (movieId === "new") {
         return;
       }
-      const { data: movie } = await getMovie(movieId);
+      const movie = await getMovie(movieId);
       this.setState({ data: this.mapToMovieForm(movie) });
     } catch (error) {
       if (error.response && error.response.status === 404) return this.props.navigate("/not-found");
@@ -60,14 +60,15 @@ class MovieForm extends Form {
   };
 
   render() {
+    const { user } = this.props;
     return (
       <>
         <h1>Movie form - {this.props.params.id} </h1>
-        {this.renderInputField("title", "Title")}
+        {this.renderInputField("title", `Title`)}
         {this.renderSelectField("genreId", "Genre", this.state.genres)}
-        {this.renderInputField("numberInStock", "Stock")}
-        {this.renderInputField("dailyRentalRate", "Rate")}
-        {this.renderButton("save", this.saveHandler)}
+        {this.renderInputField("numberInStock", `Quantity in stock`)}
+        {this.renderInputField("dailyRentalRate", `daily rental rate`)}
+        {user.isGlobalAdmin && this.renderButton("save", this.saveHandler)}
       </>
     );
   }

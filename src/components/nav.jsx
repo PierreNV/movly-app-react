@@ -2,7 +2,7 @@ import React from "react";
 import { NavLink } from "react-router-dom";
 import Logout from "./logout";
 
-const Nav = ({ user, isAdmin }) => {
+const Nav = ({ user }) => {
   return (
     <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
       <div className="container-fluid">
@@ -34,7 +34,7 @@ const Nav = ({ user, isAdmin }) => {
                 </NavLink>
               </li>
             )}
-            {isAdmin && (
+            {user?.isGlobalAdmin && (
               <li className="nav-item">
                 <NavLink className="nav-link" aria-current="page" to="/customers">
                   Customers

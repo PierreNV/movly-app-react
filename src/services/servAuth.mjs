@@ -1,32 +1,43 @@
-import jwtDecode from "jwt-decode";
-import servHTTP, { setJWT } from "./servHTTP.mjs";
+import * as Realm from "realm-web";
 
-setJWT(getJWT());
-
-const endPoint = "/auth/";
+const realm = new Realm.App({ id: `${process.env.REACT_APP_MONGODB_API_ID}` });
 
 export async function login(email, password) {
-  const { data: jwt } = await servHTTP.post(endPoint, { email, password });
-  if (jwt) localStorage.setItem("token", jwt);
-}
-
-export function loginWithJWT(jwt) {
-  if (jwt) localStorage.setItem("token", jwt);
+  const credentials = Realm.Credentials.emailPassword(email, password);
+  const user = await realm.logIn(credentials);
+  console.assert(user.id === realm.currentUser.id, "user is already logged in.");
 }
 
 export function logout() {
-  localStorage.removeItem("token");
+  realm.currentUser?.logOut();
 }
 
-export function getCurrentUser() {
+export async function confirmUser(token, tokenId) {
+  await realm.emailPasswordAuth.confirmUser({ token, tokenId });
+}
+
+export async function getCurrentUser() {
   try {
-    const jwt = localStorage.getItem("token");
-    return jwtDecode(jwt);
+    return realm?.currentUser?.customData;
+  } catch (error) {
+    return null;
+  }
+}
+export async function getCurrentUserProfile() {
+  try {
+    return realm?.currentUser?.profile;
   } catch (error) {
     return null;
   }
 }
 
 export function getJWT() {
-  return localStorage.getItem("token");
+  return realm.currentUser?.accessToken;
+}
+
+export async function register(user) {
+  await realm.emailPasswordAuth.registerUser({
+    email: user.email,
+    password: user.password,
+  });
 }

@@ -16,12 +16,16 @@ class MoviesTable extends Component {
     { path: "dailyRentalRate", label: "Rate" },
     {
       key: "like",
-      content: (movie) => this.props.user && <Like onLike={() => this.props.onLike(movie)} liked={movie.liked} />,
+      content: (movie) => (
+        <button type="button" className="btn btn-secondary" disabled={!this.props.user} onClick={() => this.props.onLike(movie)}>
+          <Like liked={movie.liked} />
+        </button>
+      ),
     },
     {
       key: "remove",
       content: (movie) => (
-        <button disabled={!this.props.user?.isGlobalAdmin} type="button" className="btn btn-danger" onClick={() => this.props.onRemove(movie)}>
+        <button type="button" className="btn btn-danger" disabled={!this.props.user?.isGlobalAdmin} onClick={() => this.props.onRemove(movie)}>
           <BsTrash />
         </button>
       ),

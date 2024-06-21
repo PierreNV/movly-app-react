@@ -1,11 +1,10 @@
 import servHTTP from "./servHTTP.mjs";
 
 const endPoint = `${process.env.REACT_APP_COLLECTION_MOVIES}`;
-const params = { secret: `${process.env.REACT_APP_SECRET}` };
 
 export async function getMovies() {
   try {
-    const movies = await servHTTP.get(endPoint, { params: params });
+    const movies = await servHTTP.get(endPoint);
     return movies;
   } catch (error) {
     console.log(error);
@@ -14,7 +13,7 @@ export async function getMovies() {
 
 export async function getMovie(movieId) {
   try {
-    const movies = await servHTTP.get(endPoint, { params: params });
+    const movies = await servHTTP.get(endPoint);
     return movies.data.find((movie) => movie._id === movieId);
   } catch (error) {
     console.log(error);
@@ -22,14 +21,14 @@ export async function getMovie(movieId) {
 }
 
 export function deleteMovie(movieId) {
-  servHTTP.delete(endPoint + movieId);
+  servHTTP.delete(endPoint);
 }
 
 export function saveMovie(movie) {
   if (movie._id) {
-    const data = { ...movie };
-    delete data._id;
-    return servHTTP.put(endPoint + movie._id, data);
+    // const data = { ...movie };
+    // delete data._id;
+    return servHTTP.put(endPoint, movie);
   }
   return servHTTP.post(endPoint, movie);
 }

@@ -1,10 +1,10 @@
 import React from "react";
-import { BiLike, BiSolidLike } from "react-icons/bi";
+import { FaHeart, FaRegHeart } from "react-icons/fa";
 
 const Like = (props) => {
   if (props.liked) {
-    <BiSolidLike />;
-  } else return <BiLike />;
+    return <FaHeart />;
+  } else return <FaRegHeart />;
 };
 
 export default Like;

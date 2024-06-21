@@ -1,27 +1,24 @@
 import React from "react";
 
-const ListGroup = ({
-	items,
-	textProperty,
-	valueProperty,
-	selectedItem,
-	onItemClick,
-}) => {
-	return (
-		<div className="btn-group mb-2 d-flex flex-wrap">
-			{items.map((item) => (
-				<button
-					key={item[valueProperty]}
-					type="button"
-					className={
-						item === selectedItem ? "btn btn-light m-0 active" : "btn btn-light m-0"
-					}
-					onClick={() => onItemClick(item)}>
-					{item[textProperty]}
-				</button>
-			))}
-		</div>
-	);
+const ListGroup = ({ items, textProperty, valueProperty, selectedItem, onItemClick }) => {
+  return (
+    <ul className="nav mb-2">
+      <li className="nav-item dropdown">
+        <button type="button" className="btn btn-light dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+          Genres
+        </button>
+        <ul className="dropdown-menu">
+          {items.map((item) => (
+            <li key={item[valueProperty]} className="nav-item">
+              <button type="button" className={item === selectedItem ? "dropdown-item active" : "dropdown-item"} onClick={() => onItemClick(item)}>
+                {item[textProperty]}
+              </button>
+            </li>
+          ))}
+        </ul>
+      </li>
+    </ul>
+  );
 };
 
 ListGroup.defaultProps = { valueProperty: "_id", textProperty: "name" };
